@@ -1,4 +1,4 @@
-@extends ('layouts.main')
+@extends ('dashboard.layouts.main')
 @section('container')
     <h1 class="text-center">Detail Kelas</h1>
     <div class="card-body">
@@ -31,6 +31,6 @@
 
 
 
-        <a type="button" class="btn btn-warning mt-5" href="/kelas/all">Back</a>
+        <a type="button" class="btn btn-warning mt-5" href="/dashboard/kelas/">Back</a>
     </div>
 @endsection

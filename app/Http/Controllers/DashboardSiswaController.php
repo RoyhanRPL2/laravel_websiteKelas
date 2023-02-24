@@ -2,21 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\Kelas;
-use Illuminate\Http\Request;
+use Termwind\Components\Dd;
 
-class SiswaController extends Controller
+class DashboardSiswaController extends Controller
 {
-    public function index()
-    {
-        return view('siswa.all', [
-            "data_siswa" => Siswa::filter(request(['search', 'kelas_id']) )->paginate(5)->appends(request()->all()),
-            'data_kelas' => Kelas::all()
+
+    public function index() {
+
+        return view('dashboard.siswa', [
+           'data_siswa' => Siswa::filter(request(['search', 'kelas_id']))->paginate(5),
+              'data_kelas' => Kelas::all()
         ]);
     }
 
-    public function show(Siswa $siswa) {    
+     public function show(Siswa $siswa) {    
         return view('siswa.detail', [
             "siswa" => $siswa
         ]);
@@ -34,17 +36,19 @@ class SiswaController extends Controller
         $validateData = $request->validate([
             'kelas_id' => 'required',
             'nis' => 'required|unique:siswas',
+            'tanggal_lahir' => 'required',
             'nama' => 'required|max:225',
-            'alamat' => 'required',
+            'alamat' => 'required', 
         ]);
 
         Siswa::create($validateData);
-        return redirect('/admin/dashboard')->with('success', 'Data siswa berhasil ditambahkan !');
+        return redirect('/dashboard/siswa')->with('success', 'Data siswa berhasil ditambahkan !');
     }
 
     public function destroy(Siswa $siswa) {
+
         Siswa::destroy($siswa->id);
-        return redirect('/siswa/all')->with('success', 'Data Berhasil Dihapus');
+        return redirect('/dashboard/siswa')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function edit(Siswa $siswa) {
@@ -57,6 +61,7 @@ class SiswaController extends Controller
     public function update(Request $request, Siswa $siswa) {
         $rules = [
             'nama' => 'required|max:255',
+            'tanggal_lahir' => 'required',
             'alamat' => 'required',
             'kelas_id' => 'required'
         ];
@@ -64,6 +69,6 @@ class SiswaController extends Controller
         $validateData = $request->validate($rules);
         Siswa::where('id', $siswa->id)
                     ->update($validateData);
-        return redirect('/siswa/all')->with('success', 'Data telah diubah');
+        return redirect('/dashboard/siswa')->with('success', 'Data telah diubah');
     }
 }

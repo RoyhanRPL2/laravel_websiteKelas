@@ -33,21 +33,48 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="/about">about</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login/all">login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register/all">register</a>
-                    </li>
+                    </li>   
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    @auth
+                        <li class="nav-item dropdown-center">
+                            <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" type="button">
+                                Hi, {{ Auth()->user()->name }}
+                            </a>
 
-
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/dashboard/index"><i
+                                            class="bi bi-layout-text-sidebar-reverse">Dashboard</i></a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <form action="/login/logout" method="post">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item"><i
+                                                class="bi bi-box-arrow-right">Logout</i></button>
+                                    </form>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login/all" class="bi bi-box-arrow-in-right">Login</a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous">
     </script>
 </body>
 

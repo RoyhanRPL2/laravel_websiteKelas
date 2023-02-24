@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        Siswa::factory(10)->create();
+        Siswa::factory(20)->create();
 
         Kelas::create([
             'kode' => '1001',

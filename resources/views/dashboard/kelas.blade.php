@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('dashboard.layouts.main')
 @section('container')
     <h1 class="text-center">Ini halaman kelas</h1>
     <br>
@@ -18,7 +18,7 @@
                     <td>{{ $kelas->kode }}</td>
                     <td>{{ $kelas->nama }}</td>
                     <td>
-                        <a type="button" href="/kelas/detail/{{ $kelas->id }}" class="btn btn-warning">Detail</a>
+                        <a type="button" href="kelas/detail/{{ $kelas->id }}" class="btn btn-warning">Detail</a>
                     </td>
                 </tr>
             @endforeach

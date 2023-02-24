@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignID('kelas_id');
             $table->integer('nis')->unique();
+            $table->date('tanggal_lahir');
             $table->string('nama');
             $table->string('alamat');
             $table->timestamps();

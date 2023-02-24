@@ -16,7 +16,7 @@ class KelasController extends Controller
 
     public function show(Kelas $kelas) {    
         return view('kelas.detail', [
-            "kelas" => $kelas
+            "data_kelas" => $kelas
         ]);
     }
 }

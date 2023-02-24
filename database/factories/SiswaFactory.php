@@ -19,6 +19,7 @@ class SiswaFactory extends Factory
         return [
             'kelas_id' => mt_rand(1,4),
             'nis' => fake()->numerify('#######'),
+            'tanggal_lahir' => fake()->dateTimeBetween($startDate = '-18 years', $endDate = '-16 years',),
             'nama' => fake()->name(),
             'alamat' => fake()->address()
         ];

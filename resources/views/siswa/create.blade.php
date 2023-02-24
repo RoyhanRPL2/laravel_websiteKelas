@@ -1,8 +1,8 @@
-@extends('layouts.main')
+@extends('dashboard.layouts.main')
 @section('container')
     <h1 align="center">Tambah Data Siswa</h1>
     <div class="col-lg-8">
-        <form method="POST" action="/siswa/add">
+        <form method="POST" action="/dashboard/add">
             @csrf
             <div class="mb-3">
                 <label for="nis" class="form-label">NIS</label>
@@ -13,7 +13,11 @@
                 <input type="text" class="form-control" id="nama" name="nama" value={{ old('nama') }}>
             </div>
             <div class="mb-3">
-                <label for="nis" class="form-label">NIS</label>
+                <label for="nama" class="form-label">Tanggal Lahir</label>
+                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value={{ old('tanggal_lahir') }}>
+            </div>
+            <div class="mb-3">
+                <label for="nis" class="form-label">Kelas</label>
                 <select name="kelas_id" id="" class="form-select">
                     @foreach ($kelas as $class)
                         <option name="kelas_id" value="{{ $class->id }}">{{ $class->nama }}</option>

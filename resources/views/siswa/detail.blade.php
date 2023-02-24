@@ -1,4 +1,4 @@
-@extends ('layouts.main')
+@extends ('dashboard.layouts.main')
 
 @section('container')
     <h1 class="text-center">Detail Data Siswa</h1>
@@ -27,6 +27,6 @@
                 placeholder="alamat">
         </div>
 
-        <a type="button" class="btn btn-warning mt-5" href="/siswa/all">Back</a>
+        <a type="button" class="btn btn-warning mt-5" href="/dashboard/siswa">Back</a>
     </div>
 @endsection
